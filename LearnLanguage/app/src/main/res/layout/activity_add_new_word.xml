@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    tools:context="com.sena.asus.learnlanguage.AddNewWord"
+    android:weightSum="1">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_kelime"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_above="@+id/input_layout_Anlam"
+        android:layout_alignParentStart="true">
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/Kelime_hint"
+        android:id="@+id/editText_Kelime"
+        android:layout_below="@+id/input_layout_kelime"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="100dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_Anlam"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_weight="11.33"
+        android:layout_marginBottom="38dp"
+        android:layout_above="@+id/button_KelimeyiEkle"
+        android:layout_alignParentStart="true">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/Anlam_hint"
+            android:id="@+id/editText_Anlam"
+            android:layout_below="@+id/input_layout_Anlam"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="100dp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:layout_width="271dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Kelimeyi_Ekle"
+        android:textColor="@color/White"
+        android:background="@drawable/ekle_btn_selector"
+        android:id="@+id/button_KelimeyiEkle"
+        android:layout_gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="60dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Kelime Ekleme"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/abc_text_size_display_1_material"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:textStyle="bold"
+        android:typeface="sans" />
+
+
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:id="@+id/imageView_addnewwords"
+            android:layout_gravity="center_horizontal"
+            android:padding="50dp"
+            android:layout_alignTop="@+id/textView"
+            android:layout_centerHorizontal="true" />
+
+
+
+</RelativeLayout>

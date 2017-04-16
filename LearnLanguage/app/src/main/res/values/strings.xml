@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Learn Language</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_add_favourite">Add to Favourites</string>
+    <string name="action_play_next">Play Next</string>
+    <string name="backdrop_title">LEARN ENGLISH</string>
+    <string name="front">FRONT</string>
+    <string name="back">BACK</string>
+    <string name="Kelime_hint">Kelime</string>
+    <string name="Anlam_hint"><font size="15">Anlam</font></string>
+    <string name="Kelimeyi_Ekle">Kelimeyi Ekle</string>
+    <string name="Tekrar_Quiz_Yap">Quiz Tekrarı</string>
+    <string name="Anasayfa">Anasayfa</string>
+
+</resources>

@@ -1,0 +1,25 @@
+﻿hello	merhaba
+dinner	aksam yemegi
+find	bulmak
+end	son
+car	araba
+carpet	halı
+water	su
+funny	komik
+read	okumak
+question	soru
+income	kazanç
+continent	kıta
+diverse	çeşitli
+severe	şiddetli
+urban	kentsel
+investment	yatırım
+wound	yara
+germ	mikrop
+vaccine	aşı
+reject	reddetmek
+adverse	ters
+pursue	izlemek
+relief	rahatlamak
+drowsy	uykucu
+tangible	somut

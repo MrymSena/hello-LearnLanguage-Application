@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#cd8aa2</color>
+    <color name="colorPrimaryDark">#F50057</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="viewBg">#f1f5f8</color>
+    <color name="menu_title">#4c4c4c</color>
+    <color name="cardFront">#434850</color>
+    <color name="cardBack">#bc4c4a</color>
+    <color name="white">#ffff</color>
+    <color name="eklecolor_btn">#4caf50</color>
+    <color name="ekleColor_Clicked">#66bb6a</color>
+    <color name="White">#FFFFFF</color>
+    <color name="quizWords">#006064</color>
+    <color name="quizQuestion">#FF9800</color>
+    <color name="quizButton">#FF5722</color>
+    <color name="quizButton_Clicked">#FF7043</color>
+
+</resources>

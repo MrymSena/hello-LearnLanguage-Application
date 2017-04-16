@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:id="@+id/score_layout"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Score:"
+        android:textSize="48dp"
+        android:textColor="@color/quizQuestion"
+        android:id="@+id/ScoreText"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/button_Tekrar_Quiz_Yap"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/quizWords"
+        android:text="Large Text"
+        android:textSize="60dp"
+        android:id="@+id/ScoreResult"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/ScoreText"
+        android:layout_centerHorizontal="true" />
+
+
+    <Button
+        android:layout_width="167dp"
+        android:layout_height="wrap_content"
+        android:text="@string/Tekrar_Quiz_Yap"
+        android:id="@+id/button_Tekrar_Quiz_Yap"
+        android:background="@drawable/quizyap_btn_selector"
+        android:layout_gravity="left"
+        android:padding="10dp"
+        android:layout_marginTop="114dp"
+        android:layout_below="@+id/ScoreResult"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Anasayfa"
+        android:id="@+id/button_Anasayfa"
+        android:background="@color/colorAccent"
+        android:padding="10dp"
+        android:paddingStart="10dp"
+        android:layout_below="@+id/button_Tekrar_Quiz_Yap"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView_Success"
+        android:layout_marginLeft="@dimen/abc_action_bar_default_padding_end_material"
+        android:layout_marginRight="@dimen/abc_action_bar_default_padding_end_material"
+        android:layout_toEndOf="@+id/ScoreText"
+        android:layout_below="@+id/ScoreResult"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>
