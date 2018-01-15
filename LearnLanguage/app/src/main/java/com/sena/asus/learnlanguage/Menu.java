@@ -5,7 +5,6 @@ package com.sena.asus.learnlanguage;
  */
 public class Menu {
     private String name;
-    private int numOfSongs;
     private int thumbnail;
 
     public Menu() {

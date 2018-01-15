@@ -71,21 +71,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-
         verifyStoragePermissions();
         if (checkExternalMedia())
             writeToSDFile();
     }
 
-
-
-
-
-
-    /**
-     * Initializing collapsing toolbar
-     * Will show and hide the toolbar title on scroll
-     */
     private void initCollapsingToolbar() {
        /* final CollapsingToolbarLayout collapsingToolbar =
                 (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
@@ -95,9 +85,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void writeToSDFile() {
-        File root = android.os.Environment.getExternalStorageDirectory();
-         File dirMyFile = new File(root.getAbsolutePath() + "/download/" + "dic.txt");
 
+        File root = android.os.Environment.getExternalStorageDirectory();
+        File dirMyFile = new File(root.getAbsolutePath() + "/download/" + "dic.txt");
+          if (!dirMyFile.exists()) {
             try {
                 FileOutputStream f = new FileOutputStream(dirMyFile);
                 PrintWriter pw = new PrintWriter(f);
@@ -122,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
             //   tv.append("\n\nFile written to "+file);
-
+    }
     }
 
 
@@ -160,7 +151,7 @@ public class MainActivity extends AppCompatActivity {
         Menu a = new Menu("Learn Words", covers[0]);
         menuList.add(a);
 
-        a = new Menu("Add New Word", covers[1]);
+        a = new Menu("Add and Delete Word", covers[1]);
         menuList.add(a);
 
         a = new Menu("Quiz", covers[2]);
