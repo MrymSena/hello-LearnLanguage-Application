@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                 FileOutputStream f = new FileOutputStream(dirMyFile);
                 PrintWriter pw = new PrintWriter(f);
 
-                Scanner scanner = new Scanner(getResources().openRawResource(R.raw.mydict));
+                Scanner scanner = new Scanner(getResources().openRawResource(R.raw.lwmypersonaldictlw));
                 while(scanner.hasNext()){
                     String line = scanner.nextLine();
                     String[] words = line.split("\t");

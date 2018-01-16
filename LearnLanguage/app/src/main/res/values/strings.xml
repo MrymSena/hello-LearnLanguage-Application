@@ -12,5 +12,8 @@
     <string name="Tekrar_Quiz_Yap">Quiz Tekrarı</string>
     <string name="Anasayfa">Anasayfa</string>
     <string name="todo">TODO</string>
-
+    <string name="search_word">Kelimeni Ara</string>
+    <string name="search">Bul</string>
+    <string name="add_new_word">Yeni Kelime Ekle</string>
+    <string name="delete_word">Kelime Sil</string>
 </resources>

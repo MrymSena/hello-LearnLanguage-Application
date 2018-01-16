@@ -7,17 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Scanner;
 
-public class LearnWords extends AppCompatActivity {
+public class LearnWords extends AppCompatActivity{
 
 
-    ArrayList<String> array;
+    private ArrayList<String> arrayData;
     private ArrayList<String> definitions;
 
 
@@ -29,7 +26,7 @@ public class LearnWords extends AppCompatActivity {
 
     private String currentWord ="";
     private TextView tvFront,tvBack;
-   private HashMap<String, String> formList;
+    private HashMap<String, String> formList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +35,10 @@ public class LearnWords extends AppCompatActivity {
 
         formList = new HashMap<>();
 
-        readAll();
+       ReadData readData= new ReadData();
+       readData.readAllData();
+       formList=readData.getFormList();
+       arrayData=readData.getMydata();
 
         findViews();
         loadAnimations();
@@ -48,7 +48,7 @@ public class LearnWords extends AppCompatActivity {
     }
 
 
-    private void readAll(){
+  /*  private void readAll(){
 
         File root = android.os.Environment.getExternalStorageDirectory();
         String dictFilePath = root.getAbsolutePath()+ "/download/dic.txt";
@@ -70,7 +70,7 @@ public class LearnWords extends AppCompatActivity {
         array = new ArrayList<>(formList.keySet());
 
     }
-
+*/
     private void changeCameraDistance() {
         int distance = 8000;
         float scale = getResources().getDisplayMetrics().density * distance;
@@ -92,10 +92,10 @@ public class LearnWords extends AppCompatActivity {
         tvBack= (TextView) findViewById(R.id.tv_backAnswer);
 
 
-        Collections.shuffle(array);
-        String word = array.get(0);
+        Collections.shuffle(arrayData);
+        String word = arrayData.get(0);
         tvFront.setText(word);
-        String answer=formList.get(array.get(0));
+        String answer=formList.get(arrayData.get(0));
         tvBack.setText(answer);
 
     }
@@ -104,8 +104,8 @@ public class LearnWords extends AppCompatActivity {
 
 
         if (!mIsBackVisible) {
-            Collections.shuffle(array);
-            String word = array.get(0);
+            Collections.shuffle(arrayData);
+            String word = arrayData.get(0);
             tvFront.setText(word);
             mSetRightOut.setTarget(mCardFrontLayout);
             mSetLeftIn.setTarget(mCardBackLayout);
@@ -113,7 +113,7 @@ public class LearnWords extends AppCompatActivity {
             mSetLeftIn.start();
             mIsBackVisible = true;
         } else{
-            String answer=formList.get(array.get(0));
+            String answer=formList.get(arrayData.get(0));
             tvBack.setText(answer);
             mSetRightOut.setTarget(mCardBackLayout);
             mSetLeftIn.setTarget(mCardFrontLayout);

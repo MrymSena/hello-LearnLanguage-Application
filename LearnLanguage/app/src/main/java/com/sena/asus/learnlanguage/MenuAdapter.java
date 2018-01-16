@@ -41,7 +41,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MyViewHolder> 
                         Intent intentLearnWords= new Intent(view.getContext(),LearnWords.class);
                         mContext.startActivity(intentLearnWords);
                     }else if(pos==1){
-                        Intent intentAddnewWord= new Intent(view.getContext(),AddNewWord.class);
+                        Intent intentAddnewWord= new Intent(view.getContext(),MyWordWorld.class);
                         mContext.startActivity(intentAddnewWord);
                     }else if(pos==2){
                         Intent intentQuizActivity= new Intent(view.getContext(),QuizActivity.class);
