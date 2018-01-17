@@ -23,27 +23,19 @@
                 android:layout_margin="@dimen/tendp"
                 android:drawableLeft="@drawable/ic_search_black_24dp"/>
 
-            <LinearLayout
-                android:id="@+id/layout_words"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:visibility="invisible">
-
                 <TextView
                     android:id="@+id/textView_english"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     />
                 <TextView
                     android:id="@+id/textView_turkish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     />
 
-            </LinearLayout>
             <Button
                 android:id="@+id/btn_search"
                 android:layout_width="wrap_content"

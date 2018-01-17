@@ -1,17 +1,18 @@
 package com.sena.asus.learnlanguage;
 
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 
 public class MyWordWorld extends AppCompatActivity {
 
@@ -19,8 +20,8 @@ public class MyWordWorld extends AppCompatActivity {
     private EditText editText_SearchView;
     private HashMap<String, String> formList;
     private ArrayList<String> arrayData;
-    private LinearLayout linearLayout;
-    private TextView textView_englisg, textView_turkish;
+    private TextView textView_english, textView_turkish;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +30,8 @@ public class MyWordWorld extends AppCompatActivity {
 
         editText_SearchView = (EditText) findViewById(R.id.editText_SearchView);
 
-        linearLayout=(LinearLayout)findViewById(R.id.layout_words);
-        textView_englisg = (TextView) findViewById(R.id.textView_english);
+
+        textView_english = (TextView) findViewById(R.id.textView_english);
         textView_turkish = (TextView) findViewById(R.id.textView_turkish);
 
         btn_search = (Button) findViewById(R.id.btn_search);
@@ -45,27 +46,44 @@ public class MyWordWorld extends AppCompatActivity {
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplication(),"tıklandı", Toast.LENGTH_LONG).show();
                 String word = editText_SearchView.getText().toString();
+                int c = 0;
 
                 for (int i = 0; i < arrayData.size(); i++) {
                     //msj.setText(dict.get(i));
                     if (word.equals(arrayData.get(i))) {
-                       showWordinLayout(arrayData.get(i),formList.get(arrayData.get(i)));
-                        break;
+                            showWordinLayout(arrayData.get(i),formList.get(arrayData.get(i)));
+                            c=1;
+                            break;
                     }
+                }if(c == 0){
+                    textView_english.setText(word);
+                    textView_turkish.setText(getString(R.string.there_is_no_word));
                 }
             }
         });
+
+        btn_addWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle= new Bundle();
+                DFragment dialogFragment= new DFragment();
+                bundle.putString("type","add");
+                dialogFragment.setArguments(bundle);
+                dialogFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.CustomDialog);
+                dialogFragment.show(getSupportFragmentManager(),"dd");
+            }
+        });
+
+
 
     }
 
 
     @SuppressLint("WrongConstant")
     public void showWordinLayout(String englishWord, String turkishWord) {
-        textView_englisg.setText(englishWord);
+        textView_english.setText(englishWord);
         textView_turkish.setText(turkishWord);
-        linearLayout.setVisibility(1);
 
 
     }

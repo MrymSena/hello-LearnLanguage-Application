@@ -6,9 +6,10 @@
     <string name="backdrop_title">LEARN ENGLISH</string>
     <string name="front">FRONT</string>
     <string name="back">BACK</string>
-    <string name="Kelime_hint">Kelime</string>
-    <string name="Anlam_hint"><font size="15">Anlam</font></string>
-    <string name="Kelimeyi_Ekle">Kelimeyi Ekle</string>
+    <string name="english_word_hint">İngilizce Kelime</string>
+    <string name="meaning_hint"><font size="15">Türkçe Anlamı</font></string>
+    <string name="save_word">Kaydet</string>
+    <string name="cancel">İptal</string>
     <string name="Tekrar_Quiz_Yap">Quiz Tekrarı</string>
     <string name="Anasayfa">Anasayfa</string>
     <string name="todo">TODO</string>
@@ -16,4 +17,5 @@
     <string name="search">Bul</string>
     <string name="add_new_word">Yeni Kelime Ekle</string>
     <string name="delete_word">Kelime Sil</string>
+    <string name="there_is_no_word">veritabanınızda bulunmamaktadır.</string>
 </resources>

@@ -9,7 +9,6 @@ import android.os.Environment;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,7 +30,7 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private CardView cardview;
+   // private CardView cardview;
     private MenuAdapter adapter;
     private List<Menu> menuList;
 
@@ -51,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         initCollapsingToolbar();
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        cardview=(CardView) findViewById(R.id.card_view);
+      //  cardview=(CardView) findViewById(R.id.card_view);
 
         menuList = new ArrayList<>();
         adapter = new MenuAdapter(this, menuList);

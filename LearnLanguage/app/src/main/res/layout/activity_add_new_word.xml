@@ -18,7 +18,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/Kelime_hint"
+        android:hint="@string/english_word_hint"
         android:id="@+id/editText_Kelime"
         android:layout_below="@+id/input_layout_kelime"
         android:layout_alignParentEnd="true"
@@ -40,7 +40,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/Anlam_hint"
+            android:hint="@string/meaning_hint"
             android:id="@+id/editText_Anlam"
             android:layout_below="@+id/input_layout_Anlam"
             android:layout_alignParentEnd="true"
@@ -51,7 +51,7 @@
     <Button
         android:layout_width="271dp"
         android:layout_height="wrap_content"
-        android:text="@string/Kelimeyi_Ekle"
+        android:text="@string/save_word"
         android:textColor="@color/White"
         android:background="@drawable/ekle_btn_selector"
         android:id="@+id/button_KelimeyiEkle"
