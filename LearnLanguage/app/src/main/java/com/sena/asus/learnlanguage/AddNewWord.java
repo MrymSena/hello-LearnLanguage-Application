@@ -47,7 +47,7 @@ public class AddNewWord extends AppCompatActivity {
                 try {
 
                     File root = android.os.Environment.getExternalStorageDirectory();
-                    String dictFilePath = root.getAbsolutePath()+"/download/dic.txt";
+                    String dictFilePath = root.getAbsolutePath()+"/download/lwmypersonaldictlw.txt";
                     try {
                         PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(dictFilePath,true)));
                         out.println(english+"\t"+turkish);

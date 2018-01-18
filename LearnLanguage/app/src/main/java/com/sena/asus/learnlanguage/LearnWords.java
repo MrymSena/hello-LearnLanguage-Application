@@ -35,8 +35,7 @@ public class LearnWords extends AppCompatActivity{
 
         formList = new HashMap<>();
 
-       ReadData readData= new ReadData();
-       readData.readAllData();
+       ReadData readData= ReadData.getInstance();
        formList=readData.getFormList();
        arrayData=readData.getMydata();
 

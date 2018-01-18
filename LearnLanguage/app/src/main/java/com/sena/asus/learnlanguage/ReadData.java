@@ -1,7 +1,11 @@
 package com.sena.asus.learnlanguage;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -15,12 +19,24 @@ public class ReadData {
     private HashMap<String, String> formList=new HashMap<String, String>();
     ArrayList<String> mydata;
     private ArrayList<String> definitions;
+    private static ReadData readData;
 
+
+    private ReadData(){
+    }
+
+    public static ReadData getInstance(){   //Singleton pattern
+        if(readData == null){
+            readData= new ReadData();
+            readData.readAllData();
+        }
+        return readData;
+    }
 
     void readAllData(){
 
         File root = android.os.Environment.getExternalStorageDirectory();
-        String dictFilePath = root.getAbsolutePath()+ "/download/dic.txt";
+        String dictFilePath = root.getAbsolutePath()+ "/download/lwmypersonaldictlw.txt";
 
         Scanner scanner = null;
         try {
@@ -38,6 +54,54 @@ public class ReadData {
         definitions = new ArrayList<>();
         mydata = new ArrayList<>(formList.keySet());
 
+    }
+
+    public boolean isWordExist(String word) {
+        // String word = editText_SearchView.getText().toString();
+        int c = 0;
+        readAllData();
+        for (int i = 0; i < mydata.size(); i++) {
+            //msj.setText(dict.get(i));
+            if (word.equals(mydata.get(i))) {
+              //  showWordinLayout(mydata.get(i), formList.get(arrayData.get(i)));
+                c = 1;
+                return true;
+            }
+        }
+        if (c == 0) {
+            return false;
+            //      textView_english.setText(word);
+            //      textView_turkish.setText(getString(R.string.there_is_no_word));
+        }
+        return false;
+    }
+
+    public String saveWord(String english_word,String turkish_word){
+        if(!isWordExist(english_word)){
+            try {
+                File root = android.os.Environment.getExternalStorageDirectory();
+                String dictFilePath = root.getAbsolutePath()+"/download/lwmypersonaldictlw.txt";
+                try {
+                    PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(dictFilePath,true)));
+                    out.println(english_word+"\t"+turkish_word);
+                    out.flush();
+                    out.close();
+
+                }
+                catch (IOException e) {
+                    return "exception";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "exception";
+            }
+            return "true";
+        }
+        return "alreadyExist";
+    }
+
+    public String getMeaning(String word){
+        return formList.get(word);
     }
 
     public HashMap getFormList(){

@@ -38,25 +38,19 @@ public class MyWordWorld extends AppCompatActivity {
         btn_addWord = (Button) findViewById(R.id.btn_addWord);
         btn_deleteWord = (Button) findViewById(R.id.btn_deleteWord);
 
-        ReadData readData = new ReadData();
-        readData.readAllData();
-        formList = readData.getFormList();
-        arrayData = readData.getMydata();
+        //ReadData readData = new ReadData();
+        //readData.readAllData();
+        //formList = readData.getFormList();
+        //arrayData = readData.getMydata();
 
         btn_search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String word = editText_SearchView.getText().toString();
-                int c = 0;
-
-                for (int i = 0; i < arrayData.size(); i++) {
-                    //msj.setText(dict.get(i));
-                    if (word.equals(arrayData.get(i))) {
-                            showWordinLayout(arrayData.get(i),formList.get(arrayData.get(i)));
-                            c=1;
-                            break;
-                    }
-                }if(c == 0){
+                ReadData readData = ReadData.getInstance();
+                if (readData.isWordExist(word)) {
+                    showWordinLayout(word,readData.getMeaning(word));
+                } else {
                     textView_english.setText(word);
                     textView_turkish.setText(getString(R.string.there_is_no_word));
                 }
@@ -71,14 +65,11 @@ public class MyWordWorld extends AppCompatActivity {
                 bundle.putString("type","add");
                 dialogFragment.setArguments(bundle);
                 dialogFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.CustomDialog);
-                dialogFragment.show(getSupportFragmentManager(),"dd");
+                dialogFragment.show(getSupportFragmentManager(),"df");
             }
         });
 
-
-
     }
-
 
     @SuppressLint("WrongConstant")
     public void showWordinLayout(String englishWord, String turkishWord) {

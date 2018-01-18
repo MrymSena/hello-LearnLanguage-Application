@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     private void writeToSDFile() {
 
         File root = android.os.Environment.getExternalStorageDirectory();
-        File dirMyFile = new File(root.getAbsolutePath() + "/download/" + "dic.txt");
+        File dirMyFile = new File(root.getAbsolutePath() + "/download/" + "lwmypersonaldictlw.txt");
           if (!dirMyFile.exists()) {
             try {
                 FileOutputStream f = new FileOutputStream(dirMyFile);

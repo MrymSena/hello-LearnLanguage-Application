@@ -68,7 +68,7 @@ public class QuizActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     private void readAll(){ File root = android.os.Environment.getExternalStorageDirectory();
-        String dictFilePath = root.getAbsolutePath()+ "/download/dic.txt";
+        String dictFilePath = root.getAbsolutePath()+ "/download/lwmypersonaldictlw.txt";
 
         Scanner scanner = null;
         try {
