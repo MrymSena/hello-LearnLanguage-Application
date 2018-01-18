@@ -7,16 +7,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.sena.asus.learnlanguage.Database.DatabaseHandler;
+import com.sena.asus.learnlanguage.Database.Word;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 public class LearnWords extends AppCompatActivity{
 
 
     private ArrayList<String> arrayData;
     private ArrayList<String> definitions;
-
+    List<Word> wordList = new ArrayList<Word>();
 
     private AnimatorSet mSetRightOut;
     private AnimatorSet mSetLeftIn;
@@ -35,9 +39,13 @@ public class LearnWords extends AppCompatActivity{
 
         formList = new HashMap<>();
 
-       ReadData readData= ReadData.getInstance();
+       /*ReadData readData= ReadData.getInstance();
        formList=readData.getFormList();
        arrayData=readData.getMydata();
+        */
+        DatabaseHandler db= new DatabaseHandler(this);
+        wordList=db.getAllWords();
+
 
         findViews();
         loadAnimations();
@@ -91,10 +99,10 @@ public class LearnWords extends AppCompatActivity{
         tvBack= (TextView) findViewById(R.id.tv_backAnswer);
 
 
-        Collections.shuffle(arrayData);
-        String word = arrayData.get(0);
+        Collections.shuffle(wordList);
+        String word = wordList.get(0).getEnglish_word();
         tvFront.setText(word);
-        String answer=formList.get(arrayData.get(0));
+        String answer=wordList.get(0).getTurkish_word();
         tvBack.setText(answer);
 
     }
@@ -103,8 +111,8 @@ public class LearnWords extends AppCompatActivity{
 
 
         if (!mIsBackVisible) {
-            Collections.shuffle(arrayData);
-            String word = arrayData.get(0);
+            Collections.shuffle(wordList);
+            String word = wordList.get(0).getEnglish_word();
             tvFront.setText(word);
             mSetRightOut.setTarget(mCardFrontLayout);
             mSetLeftIn.setTarget(mCardBackLayout);
@@ -112,7 +120,7 @@ public class LearnWords extends AppCompatActivity{
             mSetLeftIn.start();
             mIsBackVisible = true;
         } else{
-            String answer=formList.get(arrayData.get(0));
+            String answer=wordList.get(0).getTurkish_word();
             tvBack.setText(answer);
             mSetRightOut.setTarget(mCardBackLayout);
             mSetLeftIn.setTarget(mCardFrontLayout);

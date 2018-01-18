@@ -20,7 +20,10 @@ public class ReadData {
     ArrayList<String> mydata;
     private ArrayList<String> definitions;
     private static ReadData readData;
+    final String FILEPATH="/download/lwmypersonaldictlw.txt";
 
+    File root = android.os.Environment.getExternalStorageDirectory();
+    private String dictFilePath = root.getAbsolutePath()+ FILEPATH;
 
     private ReadData(){
     }
@@ -34,10 +37,6 @@ public class ReadData {
     }
 
     void readAllData(){
-
-        File root = android.os.Environment.getExternalStorageDirectory();
-        String dictFilePath = root.getAbsolutePath()+ "/download/lwmypersonaldictlw.txt";
-
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File(dictFilePath));
@@ -79,8 +78,7 @@ public class ReadData {
     public String saveWord(String english_word,String turkish_word){
         if(!isWordExist(english_word)){
             try {
-                File root = android.os.Environment.getExternalStorageDirectory();
-                String dictFilePath = root.getAbsolutePath()+"/download/lwmypersonaldictlw.txt";
+
                 try {
                     PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter(dictFilePath,true)));
                     out.println(english_word+"\t"+turkish_word);
@@ -99,6 +97,38 @@ public class ReadData {
         }
         return "alreadyExist";
     }
+
+    public void deleteWord(String english_word){
+        if(!isWordExist(english_word)){
+            try{
+                removeLine(english_word);
+            }catch (Exception e){
+
+            }
+        }
+    }
+
+
+    private void removeLine(String Line) throws IOException{
+        File temp = new File(dictFilePath);
+        BufferedWriter bw = new BufferedWriter(new FileWriter(temp));
+        Scanner scanner = new Scanner(new File(dictFilePath));
+        String removeID = Line;
+        String currentLine;
+        while(scanner.hasNext()){
+            currentLine = scanner.nextLine();
+            String[] words = currentLine.split("\t");
+            //formList.put(words[0],words[1]);
+            if(words[0].equals(removeID)){
+                currentLine = "";
+            }
+            bw.write(currentLine + System.getProperty("line.separator"));
+
+        }
+        bw.close();
+
+    }
+
 
     public String getMeaning(String word){
         return formList.get(word);

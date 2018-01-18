@@ -10,6 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.sena.asus.learnlanguage.Database.DatabaseHandler;
+import com.sena.asus.learnlanguage.Database.Word;
+
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -47,13 +52,23 @@ public class MyWordWorld extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String word = editText_SearchView.getText().toString();
-                ReadData readData = ReadData.getInstance();
+                word= StringUtils.capitalize(word.toLowerCase());
+
+                DatabaseHandler db= new DatabaseHandler(getApplication());
+                Word words=db.getWord(word);
+                if(words!=null) {
+                    showWordinLayout(words.getEnglish_word(), words.getTurkish_word());
+                }else{
+                    textView_english.setText(word);
+                    textView_turkish.setText(getString(R.string.there_is_no_word));
+                }
+              /*  ReadData readData = ReadData.getInstance();
                 if (readData.isWordExist(word)) {
                     showWordinLayout(word,readData.getMeaning(word));
                 } else {
                     textView_english.setText(word);
                     textView_turkish.setText(getString(R.string.there_is_no_word));
-                }
+                }  */
             }
         });
 
@@ -61,11 +76,21 @@ public class MyWordWorld extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Bundle bundle= new Bundle();
-                DFragment dialogFragment= new DFragment();
-                bundle.putString("type","add");
-                dialogFragment.setArguments(bundle);
+                DFragment_Add dialogFragment= new DFragment_Add();
+               // bundle.putString("type","add");
+               // dialogFragment.setArguments(bundle);
                 dialogFragment.setStyle(DialogFragment.STYLE_NORMAL, R.style.CustomDialog);
                 dialogFragment.show(getSupportFragmentManager(),"df");
+            }
+        });
+
+
+        btn_deleteWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DFragment_Delete dFragment_delete= new DFragment_Delete();
+                dFragment_delete.setStyle(DialogFragment.STYLE_NORMAL, R.style.CustomDialog);
+                dFragment_delete.show(getSupportFragmentManager(),"df");
             }
         });
 

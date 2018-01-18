@@ -16,6 +16,6 @@
     <string name="search_word">Kelimeni Ara</string>
     <string name="search">Bul</string>
     <string name="add_new_word">Yeni Kelime Ekle</string>
-    <string name="delete_word">Kelime Sil</string>
+    <string name="delete_word">Sil</string>
     <string name="there_is_no_word">veritabanınızda bulunmamaktadır.</string>
 </resources>
