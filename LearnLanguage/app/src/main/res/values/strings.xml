@@ -10,6 +10,7 @@
     <string name="meaning_hint"><font size="15">Türkçe Anlamı</font></string>
     <string name="save_word">Kaydet</string>
     <string name="cancel">İptal</string>
+    <string name="ok">Evet</string>
     <string name="Tekrar_Quiz_Yap">Quiz Tekrarı</string>
     <string name="Anasayfa">Anasayfa</string>
     <string name="todo">TODO</string>

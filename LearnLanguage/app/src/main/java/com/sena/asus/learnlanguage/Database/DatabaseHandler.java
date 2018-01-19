@@ -72,8 +72,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_EWORD, word.getEnglish_word()); // Word English word
         values.put(KEY_TWORD, word.getTurkish_word()); // Word Turkish word
 
-        Word english=getWord(word.getEnglish_word());
-        if(english==null) {
+        boolean english = isWordExist(word.getEnglish_word());
+        if(!english) {
             try {
                 db.insert(TABLE_WORDS, null, values);
                 db.close();
@@ -90,6 +90,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // Closing database connection
     }
 
+
+    public boolean isWordExist(String e_word){
+        Word english_word=getWord(e_word);
+        if(english_word !=null)
+            return true;
+        else return false;
+    }
+
+
     // Getting single contact
     public Word getWord(String key_EWORD) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -97,17 +106,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_WORDS, new String[] { KEY_ID,
                         KEY_EWORD, KEY_TWORD }, KEY_EWORD + "=?",
                 new String[] { String.valueOf(key_EWORD) }, null, null, null, null);
-        if (cursor != null)
-            if(cursor.moveToFirst()) {
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
                 word = new Word(Integer.parseInt(cursor.getString(0)),
                         cursor.getString(1), cursor.getString(2));
             }
+        }
         return word;
     }
 
     // Getting All Contacts
     public List<Word> getAllWords() {
-        List<Word> contactList = new ArrayList<Word>();
+        List<Word> wordList = new ArrayList<Word>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + TABLE_WORDS;
 
@@ -117,17 +127,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
-                Word contact = new Word();
-                contact.setID(Integer.parseInt(cursor.getString(0)));
-                contact.setEnglish_word(cursor.getString(1));
-                contact.setTurkish_word(cursor.getString(2));
+                Word word = new Word();
+                word.setID(Integer.parseInt(cursor.getString(0)));
+                word.setEnglish_word(cursor.getString(1));
+                word.setTurkish_word(cursor.getString(2));
                 // Adding contact to list
-                contactList.add(contact);
+                wordList.add(word);
             } while (cursor.moveToNext());
         }
 
         // return contact list
-        return contactList;
+
+        return wordList;
     }
 
     // Updating single contact
@@ -144,10 +155,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     // Deleting single contact
-    public void deleteWord(Word word) {
+    public void deleteWord(String e_word) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_WORDS, KEY_ID + " = ?",
-                new String[] { String.valueOf(word.getID()) });
+        db.delete(TABLE_WORDS, KEY_EWORD + " = ?",
+                new String[] { String.valueOf(e_word) });
         db.close();
     }
 
